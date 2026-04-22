@@ -95,3 +95,10 @@ finally {
 Write-Output ""
 Write-Output "$([char]0x2705) Installation complete!"
 Write-Output ""
+
+
+
+
+
+
+# https://downloads.claude.ai/claude-code-releases/2.1.117/win32-x64/claude.exe
