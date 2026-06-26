@@ -1,0 +1,29 @@
+mkdir -p my-custom-ee/src
+cd my-custom-ee
+# Move your downloaded amazon.aws tarball here
+mv /path/to/amazon-aws-3.x.x.tar.gz src/amazon-aws-latest.tar.gz
+
+====================================================================================
+requirements.yml
+---
+collections:
+  - name: src/amazon-aws-latest.tar.gz
+    type: file
+	
+====================================================================================
+execution-environment.yml
+version: 3
+
+images:
+  base_image:
+    name: quay.io/ansible/ansible-runner:latest
+
+dependencies:
+  galaxy: requirements.yml
+
+additional_build_files:
+  - src: src/amazon-aws-latest.tar.gz
+    dest: src
+	
+====================================================================================
+ansible-builder build --tag custom-aws-ee:latest --container-runtime docker
